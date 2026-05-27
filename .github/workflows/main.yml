@@ -1,0 +1,27 @@
+name: Mi primer pipeline
+
+on: [push]
+
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mensaje de prueba
+        run: echo "Hola desde el pipeline de GitHub Actions"
+      
+      - name: Mostrar fecha del servidor
+        run: date
+      
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Verificar versión de Python instalada
+        run: python --version
+      
+      - name: Instalar pip-audit
+        run: pip install pip-audit
+      
+      - name: Ejecutar pip-audit en este entorno
+        run: pip-audit
